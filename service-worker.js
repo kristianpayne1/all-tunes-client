@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/all-tunes-client/precache-manifest.f00b72611f4aca028ad92ab79f878cb2.js"
+  "/all-tunes-client/precache-manifest.c6af3f8cc3ee7e0aa4e64629327080ee.js"
 );
 
 self.addEventListener('message', (event) => {

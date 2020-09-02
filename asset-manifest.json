@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/all-tunes-client/static/css/main.27fd15f6.chunk.css",
-    "main.js": "/all-tunes-client/static/js/main.5858a6d2.chunk.js",
-    "main.js.map": "/all-tunes-client/static/js/main.5858a6d2.chunk.js.map",
+    "main.js": "/all-tunes-client/static/js/main.0cb55e5a.chunk.js",
+    "main.js.map": "/all-tunes-client/static/js/main.0cb55e5a.chunk.js.map",
     "runtime-main.js": "/all-tunes-client/static/js/runtime-main.e251b15a.js",
     "runtime-main.js.map": "/all-tunes-client/static/js/runtime-main.e251b15a.js.map",
     "static/css/2.11829350.chunk.css": "/all-tunes-client/static/css/2.11829350.chunk.css",
     "static/js/2.0173968f.chunk.js": "/all-tunes-client/static/js/2.0173968f.chunk.js",
     "static/js/2.0173968f.chunk.js.map": "/all-tunes-client/static/js/2.0173968f.chunk.js.map",
     "index.html": "/all-tunes-client/index.html",
-    "precache-manifest.f00b72611f4aca028ad92ab79f878cb2.js": "/all-tunes-client/precache-manifest.f00b72611f4aca028ad92ab79f878cb2.js",
+    "precache-manifest.c6af3f8cc3ee7e0aa4e64629327080ee.js": "/all-tunes-client/precache-manifest.c6af3f8cc3ee7e0aa4e64629327080ee.js",
     "service-worker.js": "/all-tunes-client/service-worker.js",
     "static/css/2.11829350.chunk.css.map": "/all-tunes-client/static/css/2.11829350.chunk.css.map",
     "static/css/main.27fd15f6.chunk.css.map": "/all-tunes-client/static/css/main.27fd15f6.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.11829350.chunk.css",
     "static/js/2.0173968f.chunk.js",
     "static/css/main.27fd15f6.chunk.css",
-    "static/js/main.5858a6d2.chunk.js"
+    "static/js/main.0cb55e5a.chunk.js"
   ]
 }
