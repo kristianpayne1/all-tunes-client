@@ -26,7 +26,7 @@ class Home extends Component {
 
     connect = () => {
         if (this.state.loggedIn) {
-            let socket = new WebSocket("ws://localhost:8888");
+            let socket = new WebSocket("ws://all-tunes-server.herokuapp.com:29189");
             this.setState({ socket: socket });
             console.log('Connected to socket');
 

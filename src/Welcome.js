@@ -7,7 +7,7 @@ class Welcome extends Component {
             <div>
                 <h1>Welcome to All Tunes!</h1>
                 <p>Log in to Spotify to get started.</p>
-                <Button href='http://localhost:8888/login' variant="outline-success">Get started</Button>{' '}
+                <Button href='https://all-tunes-server.herokuapp.com:29189/login' variant="outline-success">Get started</Button>{' '}
             </div>
         )
     }
