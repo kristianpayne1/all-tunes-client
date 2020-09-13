@@ -8,11 +8,16 @@ class Home extends Component {
     constructor() {
         super();
         const params = this.getDollarParams();
-        const token = params.access_token;
+        const userId = params.id;
+        const access_token = params.access_token;
+        const refresh_token = params.refresh_token;
         this.state = {
-            loggedIn: token ? true : false,
+            loggedIn: access_token ? true : false,
+            socketURL: "ws://localhost:8888/",
             socket: null,
-            token: token,
+            userId: userId,
+            access_token: access_token,
+            refresh_token: refresh_token,
             isHost: false,
             partyCode: '',
             isConnected: false,
@@ -24,11 +29,25 @@ class Home extends Component {
         this.connect();
     }
 
+    reconnect = () => {
+        console.log("Attempting to reconnect to socket in 5s...");
+        setTimeout(() => {
+            this.connect();
+        }, 5000);
+    }
+
     connect = () => {
         if (this.state.loggedIn) {
-            let socket = new WebSocket("ws://all-tunes-server.herokuapp.com:29189");
+            let socket = new WebSocket(this.state.socketURL);
+            socket.onerror = () => {
+                self.setState({ isConnected: false, partyCode: '', isHost: false, recommended: [] });
+                socket.close();
+                this.reconnect();
+            }
+            socket.onopen = () => {
+                console.log("Connected to socket");
+            }
             this.setState({ socket: socket });
-            console.log('Connected to socket');
 
             let self = this;
 
@@ -37,14 +56,17 @@ class Home extends Component {
                 console.log(message);
                 switch (message.messageType) {
                     case 'SEND_ACCESS_TOKEN': {
-                        var response = {
-                            messageType: 'ACCESS_TOKEN',
-                            access_token: self.state.token
-                        };
-                        try {
-                            self.state.socket.send(JSON.stringify(response));
-                        } catch (error) {
-                            console.log(error);
+                        self.sendAccessToken();
+                    }
+                        break;
+                    case 'FAILED_ACCESS_TOKEN': {
+                        self.setState({ isConnected: false, partyCode: '', isHost: false });
+                        console.log("Sending access token failed \n" + message.error);
+                        let states = self.state;
+                        if (states.access_token && states.refresh_token && states.userId) {
+                            self.sendAccessToken();
+                        }else{
+                            window.location.replace("http://localhost:8888/login");
                         }
                     }
                         break;
@@ -70,27 +92,37 @@ class Home extends Component {
                         self.setState({ recommended: message.data });
                     }
                         break;
+                    case 'DISCONNECT': {
+                        console.log('Disconnected');
+                        self.setState({ isConnected: false, partyCode: '', isHost: false, recommended: [] });
+                    }
+                        break;
                     default: {
                         console.log("Recieved unknown message");
                     }
                 }
 
-                socket.onerror = err => {
-                    console.error(
-                        "Socket encountered error: ",
-                        err.message,
-                        "Closing socket"
-                    );
-                    self.setState({ isConnected: false, partyCode: '', isHost: false, recommended: [] });
-                    socket.close();
-                }
-
                 socket.onclose = () => {
                     self.setState({ isConnected: false, partyCode: '', isHost: false, recommended: [] });
-                    console.log('disconnected')
+                    console.log('Socket closed')
                     // automatically try to reconnect on connection loss
+                    this.reconnect();
                 }
             }
+        }
+    }
+
+    sendAccessToken = () => {
+        var response = {
+            messageType: 'ACCESS_TOKEN',
+            id: this.state.userId,
+            access_token: this.state.access_token,
+            refresh_token: this.state.refresh_token,
+        };
+        try {
+            this.state.socket.send(JSON.stringify(response));
+        } catch (error) {
+            console.log(error);
         }
     }
 
