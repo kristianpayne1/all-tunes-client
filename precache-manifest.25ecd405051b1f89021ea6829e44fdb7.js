@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "768c09bd9e28193c8a9492020b58ff2a",
+    "revision": "6f577d1ee3fbe8260b9c3e0c8570e57c",
     "url": "/all-tunes-client/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/all-tunes-client/static/css/2.11829350.chunk.css"
   },
   {
-    "revision": "db0cdab8a41d5754056a",
+    "revision": "61a42a804716483f6a1e",
     "url": "/all-tunes-client/static/css/main.27fd15f6.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/all-tunes-client/static/js/2.0173968f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "db0cdab8a41d5754056a",
-    "url": "/all-tunes-client/static/js/main.4afe39a8.chunk.js"
+    "revision": "61a42a804716483f6a1e",
+    "url": "/all-tunes-client/static/js/main.1abfeb45.chunk.js"
   },
   {
     "revision": "d5e72585e46156a19c9f",
