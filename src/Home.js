@@ -13,7 +13,7 @@ class Home extends Component {
         const refresh_token = params.refresh_token;
         this.state = {
             loggedIn: access_token ? true : false,
-            socketURL: "ws://localhost:8888/",
+            socketURL: "ws://all-tunes-server.herokuapp.com/",
             socket: null,
             userId: userId,
             access_token: access_token,
